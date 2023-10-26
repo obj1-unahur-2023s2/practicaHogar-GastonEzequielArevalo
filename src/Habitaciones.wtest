@@ -1,0 +1,133 @@
+import Habitaciones.*
+import Personas.*
+
+describe "Test de habitacion de uso general"{
+	
+	const p1 = new Persona(edad = 5)
+	const p2 = new Persona(edad = 10)
+	const p3 = new Persona(edad = 20)
+	
+	const habitacionDeUsoGeneral1 = new HabitacionDeUsoGeneral(ocupantes = [p1,p2,p3])
+	
+	test "Los puntos de confort que aporta a la persona debe ser 10"{
+		
+		assert.equals(10,habitacionDeUsoGeneral1.nivelDeConfortQueAporta(p1))
+	}
+	
+	test "Los puntos de confort que aporta a la segunda persona debe ser 10"{
+		
+		assert.equals(10,habitacionDeUsoGeneral1.nivelDeConfortQueAporta(p2))
+	}
+	
+	test "Los puntos de confort que aporta a la tercer persona debe ser 10"{
+		
+		assert.equals(10,habitacionDeUsoGeneral1.nivelDeConfortQueAporta(p3))
+	}
+	
+	test "Las personas pueden entrar"{
+		assert.that(habitacionDeUsoGeneral1.puedeEntrar(p1))
+	}
+	
+	test "Los ocupantes de la habitacion deben ser p1,p2,p3"{
+		assert.equals([p1,p2,p3],habitacionDeUsoGeneral1.ocupantes())
+	}
+}
+
+describe "Test de habitacion de dormitorio"{
+	
+	const p1 = new Persona(edad = 5)
+	const p2 = new Persona(edad = 10)
+	const p3 = new Persona(edad = 20)
+	
+	const dormitorio1 = new Dormitorio(ocupantes = [p1,p2,p3], personasQueDuermenEnElDormitorio = [p2,p3])
+	
+	
+	test "Los puntos de confort que aporta a la persona debe ser 10"{
+		
+		assert.equals(10,dormitorio1.nivelDeConfortQueAporta(p1))
+	}
+	
+	test "Los puntos de confort que aporta a la segunda persona debe ser 15"{
+		
+		assert.equals(15,dormitorio1.nivelDeConfortQueAporta(p2))
+	}
+	
+	test "Los puntos de confort que aporta a la tercer persona debe ser 15"{
+		
+		assert.equals(15,dormitorio1.nivelDeConfortQueAporta(p3))
+	}
+	
+	test "Las personas pueden entrar"{
+		assert.notThat(dormitorio1.puedeEntrar(p1))
+	}
+	
+	test "Los ocupantes de la habitacion deben ser p1,p2,p3"{
+		assert.equals([p1,p2,p3],dormitorio1.ocupantes())
+	}
+}
+
+describe "Test de habitacion de banios"{
+	
+	const p1 = new Persona(edad = 5)
+	const p2 = new Persona(edad = 10)
+	const p3 = new Persona(edad = 20)
+	
+	const banio1 = new Banio(ocupantes = [p1,p2,p3])
+	
+	
+	test "Los puntos de confort que aporta a la persona debe ser 10"{
+		
+		assert.equals(14,banio1.nivelDeConfortQueAporta(p1))
+	}
+	
+	test "Los puntos de confort que aporta a la segunda persona debe ser 15"{
+		
+		assert.equals(14,banio1.nivelDeConfortQueAporta(p2))
+	}
+	
+	test "Los puntos de confort que aporta a la tercer persona debe ser 15"{
+		
+		assert.equals(14,banio1.nivelDeConfortQueAporta(p3))
+	}
+	
+	test "Las personas pueden entrar"{
+		assert.notThat(banio1.puedeEntrar(p1))
+	}
+	
+	test "Los ocupantes de la habitacion deben ser p1,p2,p3"{
+		assert.equals([p1,p2,p3],banio1.ocupantes())
+	}
+}
+
+describe "Test de habitacion de cocina"{
+	
+	const p1 = new Persona(edad = 5)
+	const p2 = new Persona(edad = 10)
+	const p3 = new Persona(edad = 20)
+	
+	const cocina1 = new Cocina(ocupantes = [p1,p2,p3])
+	
+	
+	test "Los puntos de confort que aporta a la persona debe ser 10"{
+		
+		assert.equals(10,cocina1.nivelDeConfortQueAporta(p1))
+	}
+	
+	test "Los puntos de confort que aporta a la segunda persona debe ser 10"{
+		
+		assert.equals(10,cocina1.nivelDeConfortQueAporta(p2))
+	}
+	
+	test "Los puntos de confort que aporta a la tercer persona debe ser 10"{
+		
+		assert.equals(10,cocina1.nivelDeConfortQueAporta(p3))
+	}
+	
+	test "Las personas pueden entrar"{
+		assert.notThat(cocina1.puedeEntrar(p1))
+	}
+	
+	test "Los ocupantes de la habitacion deben ser p1,p2,p3"{
+		assert.equals([p1,p2,p3],cocina1.ocupantes())
+	}
+}
